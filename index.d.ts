@@ -2,6 +2,7 @@ export interface GenerateOptions {
     minLength?: number;
     maxLength?: number;
     pattern?: string;
+    retries?: number;
 }
 export declare const defaultGenerateOptions: GenerateOptions;
-export declare const generate: (userGenerateOptions?: GenerateOptions) => any;
+export declare const generatePassword: (userGenerateOptions?: GenerateOptions) => any;

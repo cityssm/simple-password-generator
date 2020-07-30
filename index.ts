@@ -1,15 +1,36 @@
-import * as randomItem from "random-item";
-import * as randomInt from "random-int";
-
+import { unleet } from "@cityssm/unleet";
 import * as randomWords from "random-words";
+import * as cussWordsObject from "cuss/index.json";
 
-import * as cussWordsObject from "cuss";
+
+// inspired by
+// https://github.com/sindresorhus/random-int
+const randomInt = (minimum: number, maximum?: number) => {
+  if (maximum === undefined) {
+    maximum = minimum;
+    minimum = 0;
+  }
+
+  return Math.floor(
+    (Math.random() * (maximum - minimum + 1)) + minimum
+  );
+};
+
+
+// inspired by
+// https://github.com/sindresorhus/random-item/
+const randomItem = (array: string[]) => {
+  return array[randomInt(array.length - 1)];
+};
+
 
 const cussWords = Object.keys(cussWordsObject).filter((cussword) => {
   return cussWordsObject[cussword] > 0;
 });
 
-const letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+const letters = ["a", "b", "c", "d", "e", "f", "g",
+  "h", "i", "j", "k", "l", "m", "n", "o", "p", "q",
+  "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 
 const symbols = ["!", "@", "%"];
 
@@ -17,17 +38,42 @@ export interface GenerateOptions {
   minLength?: number;
   maxLength?: number;
   pattern?: string;
+  retries?: number;
 };
 
 export const defaultGenerateOptions: GenerateOptions = {
   minLength: 8,
   maxLength: 50,
-  pattern: "wCnn"
+  pattern: "wCnn",
+  retries: 20
 };
 
-export const generate = (userGenerateOptions?: GenerateOptions) => {
+const hasBadWord = (potentialPassword: string) => {
 
-  const generateOptions = Object.assign({}, defaultGenerateOptions, userGenerateOptions);
+  const potentialPasswordLowerCase = potentialPassword.toLowerCase();
+
+  const potentialPasswordLowerCaseList = unleet(potentialPassword);
+
+  if (!potentialPasswordLowerCaseList.includes(potentialPasswordLowerCase)) {
+    potentialPasswordLowerCaseList.push(potentialPasswordLowerCase);
+  }
+
+  for (const potentialPasswordToCheck of potentialPasswordLowerCaseList) {
+    for (const cussWord of cussWords) {
+      if (potentialPasswordToCheck.includes(cussWord)) {
+        return true;
+      }
+    }
+  }
+
+  return false;
+};
+
+const generatePasswordRecurse = (generateOptions: GenerateOptions, retries: number) => {
+
+  if (retries < 0) {
+    return null;
+  }
 
   let potentialPassword = "";
 
@@ -95,16 +141,19 @@ export const generate = (userGenerateOptions?: GenerateOptions) => {
   }
 
   if (potentialPassword.length < generateOptions.minLength || potentialPassword.length > generateOptions.maxLength) {
-    return generate(userGenerateOptions);
+    return generatePasswordRecurse(generateOptions, retries - 1);
   }
 
-  const potentialPasswordLowerCase = potentialPassword.toLowerCase();
-
-  for (const cussWord of cussWords) {
-    if (potentialPasswordLowerCase.includes(cussWord)) {
-      return generate(userGenerateOptions);
-    }
+  if (hasBadWord(potentialPassword)) {
+    return generatePasswordRecurse(generateOptions, retries - 1);
   }
 
   return potentialPassword;
+};
+
+export const generatePassword = (userGenerateOptions?: GenerateOptions) => {
+
+  const generateOptions = Object.assign({}, defaultGenerateOptions, userGenerateOptions);
+  return generatePasswordRecurse(generateOptions, generateOptions.retries);
+
 };

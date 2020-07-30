@@ -1,24 +1,23 @@
-import { generate, GenerateOptions } from "./index";
+import { generatePassword, GenerateOptions } from "./index";
 
 //
 
 console.log("Default Options");
-console.log(generate());
-console.log(generate());
-console.log(generate());
-console.log(generate());
+console.log(generatePassword());
+console.log(generatePassword());
+console.log(generatePassword());
+console.log(generatePassword());
 console.log("\n");
 
 //
 
 const optionsA: GenerateOptions = {
   minLength: 15,
-  maxLength: 20,
-  pattern: "wWw"
+  pattern: "wnWnx"
 };
 
 console.log(optionsA);
-console.log(generate(optionsA));
-console.log(generate(optionsA));
-console.log(generate(optionsA));
-console.log(generate(optionsA));
+console.log(generatePassword(optionsA));
+console.log(generatePassword(optionsA));
+console.log(generatePassword(optionsA));
+console.log(generatePassword(optionsA));
