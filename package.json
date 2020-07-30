@@ -1,7 +1,7 @@
 {
   "name": "@cityssm/simple-password-generator",
-  "version": "0.5.0",
-  "description": "",
+  "version": "0.5.1",
+  "description": "Makes generating simple or complex, appropriate passwords a breeze.",
   "main": "index.js",
   "scripts": {
     "test": "test.js"
@@ -10,6 +10,11 @@
     "type": "git",
     "url": "git+https://github.com/cityssm/simple-password-generator.git"
   },
+  "keywords": [
+    "password",
+    "safe",
+    "unleet"
+  ],
   "author": "The Corporation of the City of Sault Ste. Marie",
   "license": "MIT",
   "bugs": {
