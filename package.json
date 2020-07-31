@@ -1,6 +1,6 @@
 {
   "name": "@cityssm/simple-password-generator",
-  "version": "0.5.1",
+  "version": "0.6.0",
   "description": "Makes generating simple or complex, appropriate passwords a breeze.",
   "main": "index.js",
   "scripts": {
