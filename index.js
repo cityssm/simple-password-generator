@@ -20,12 +20,13 @@ const cussWords = Object.keys(cussWordsObject).filter((cussword) => {
 const letters = ["a", "b", "c", "d", "e", "f", "g",
     "h", "i", "j", "k", "l", "m", "n", "o", "p", "q",
     "r", "s", "t", "u", "v", "w", "x", "y", "z"];
-const symbols = ["!", "@", "%"];
+const symbols = ["!", "@", "$", "%", "*", "-", "?"];
 ;
 exports.defaultGenerateOptions = {
     minLength: 8,
     maxLength: 50,
     pattern: "wCnn",
+    doShufflePattern: false,
     retries: 20
 };
 const hasBadWord = (potentialPassword) => {
@@ -75,7 +76,7 @@ const generatePasswordRecurse = (generateOptions, retries) => {
                 passwordPiece = randomItem(symbols);
                 break;
             default:
-                console.warn("Unrecoginzed pattern character: " + patternCharacter);
+                console.warn("Unrecognized pattern character: " + patternCharacter);
                 break;
         }
         potentialPassword += passwordPiece;
@@ -90,5 +91,15 @@ const generatePasswordRecurse = (generateOptions, retries) => {
 };
 exports.generatePassword = (userGenerateOptions) => {
     const generateOptions = Object.assign({}, exports.defaultGenerateOptions, userGenerateOptions);
+    if (generateOptions.doShufflePattern) {
+        const patternArray = generateOptions.pattern.split("");
+        for (let indexA = patternArray.length - 1; indexA > 0; indexA--) {
+            const indexB = Math.floor(Math.random() * (indexA + 1));
+            const patternCharacter = patternArray[indexA];
+            patternArray[indexA] = patternArray[indexB];
+            patternArray[indexB] = patternCharacter;
+        }
+        generateOptions.pattern = patternArray.join("");
+    }
     return generatePasswordRecurse(generateOptions, generateOptions.retries);
 };

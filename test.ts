@@ -21,3 +21,17 @@ console.log(generatePassword(optionsA));
 console.log(generatePassword(optionsA));
 console.log(generatePassword(optionsA));
 console.log(generatePassword(optionsA));
+console.log("\n");
+
+//
+
+const optionsB: GenerateOptions = {
+  pattern: "xxxXXXnnns",
+  doShufflePattern: true
+};
+
+console.log(optionsB);
+console.log(generatePassword(optionsB));
+console.log(generatePassword(optionsB));
+console.log(generatePassword(optionsB));
+console.log(generatePassword(optionsB));

@@ -32,12 +32,13 @@ const letters = ["a", "b", "c", "d", "e", "f", "g",
   "h", "i", "j", "k", "l", "m", "n", "o", "p", "q",
   "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 
-const symbols = ["!", "@", "%"];
+const symbols = ["!", "@", "$", "%", "*", "-", "?"];
 
 export interface GenerateOptions {
   minLength?: number;
   maxLength?: number;
   pattern?: string;
+  doShufflePattern?: boolean;
   retries?: number;
 };
 
@@ -45,6 +46,7 @@ export const defaultGenerateOptions: GenerateOptions = {
   minLength: 8,
   maxLength: 50,
   pattern: "wCnn",
+  doShufflePattern: false,
   retries: 20
 };
 
@@ -69,7 +71,7 @@ const hasBadWord = (potentialPassword: string) => {
   return false;
 };
 
-const generatePasswordRecurse = (generateOptions: GenerateOptions, retries: number) => {
+const generatePasswordRecurse = (generateOptions: GenerateOptions, retries: number): string | null => {
 
   if (retries < 0) {
     return null;
@@ -132,7 +134,7 @@ const generatePasswordRecurse = (generateOptions: GenerateOptions, retries: numb
 
       default:
 
-        console.warn("Unrecoginzed pattern character: " + patternCharacter);
+        console.warn("Unrecognized pattern character: " + patternCharacter);
         break;
 
     }
@@ -151,9 +153,25 @@ const generatePasswordRecurse = (generateOptions: GenerateOptions, retries: numb
   return potentialPassword;
 };
 
-export const generatePassword = (userGenerateOptions?: GenerateOptions) => {
+export const generatePassword = (userGenerateOptions?: GenerateOptions): string | null => {
 
   const generateOptions = Object.assign({}, defaultGenerateOptions, userGenerateOptions);
+
+  if (generateOptions.doShufflePattern) {
+
+    const patternArray = generateOptions.pattern.split("");
+
+    for (let indexA = patternArray.length - 1; indexA > 0; indexA--) {
+
+      const indexB = Math.floor(Math.random() * (indexA + 1));
+      const patternCharacter = patternArray[indexA];
+      patternArray[indexA] = patternArray[indexB];
+      patternArray[indexB] = patternCharacter;
+    }
+
+    generateOptions.pattern = patternArray.join("");
+  }
+
   return generatePasswordRecurse(generateOptions, generateOptions.retries);
 
 };

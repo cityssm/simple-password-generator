@@ -16,3 +16,13 @@ console.log(index_1.generatePassword(optionsA));
 console.log(index_1.generatePassword(optionsA));
 console.log(index_1.generatePassword(optionsA));
 console.log(index_1.generatePassword(optionsA));
+console.log("\n");
+const optionsB = {
+    pattern: "xxxXXXnnns",
+    doShufflePattern: true
+};
+console.log(optionsB);
+console.log(index_1.generatePassword(optionsB));
+console.log(index_1.generatePassword(optionsB));
+console.log(index_1.generatePassword(optionsB));
+console.log(index_1.generatePassword(optionsB));
