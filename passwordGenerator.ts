@@ -19,62 +19,22 @@ const symbols = ["!", "@", "$", "%", "*", "-", "_", "+", "=", "?"];
  */
 
 
-const getPasswordPiece = (patternCharacter: string) => {
+const passwordPatternPieces: { [patternCharacter: string]: () => string } = {
 
-  let passwordPiece = "";
+  // Words
+  w: () => { return randomWords(); },
+  W: () => { return randomWords().toUpperCase(); },
+  C: () => { return toProperCase(randomWords()); },
 
-  switch (patternCharacter) {
+  // Letters
+  x: () => { return randomItem(letters); },
+  X: () => { return randomItem(letters).toUpperCase(); },
 
-    // Words
+  // Numbers
+  n: () => { return randomInt(9).toString(); },
 
-    case "w":
-
-      passwordPiece = randomWords();
-      break;
-
-    case "W":
-
-      passwordPiece = randomWords().toUpperCase();
-      break;
-
-    case "C":
-
-      passwordPiece = toProperCase(randomWords());
-      break;
-
-    // Letters
-
-    case "x":
-
-      passwordPiece = randomItem(letters);
-      break;
-
-    case "X":
-
-      passwordPiece = randomItem(letters).toUpperCase();
-      break;
-
-    // Numbers
-
-    case "n":
-
-      passwordPiece = randomInt(9).toString();
-      break;
-
-    // Symbols
-
-    case "s":
-
-      passwordPiece = randomItem(symbols);
-      break;
-
-    default:
-
-      console.warn("Unrecognized pattern character: " + patternCharacter);
-      break;
-  }
-
-  return passwordPiece;
+  // Symbols
+  s: () => { return randomItem(symbols); }
 };
 
 
@@ -83,7 +43,10 @@ export const generatePasswordFromPattern = (passwordPattern: string) => {
   let potentialPassword = "";
 
   for (const patternCharacter of passwordPattern) {
-    potentialPassword += getPasswordPiece(patternCharacter);
+
+    if (passwordPatternPieces[patternCharacter]) {
+      potentialPassword += passwordPatternPieces[patternCharacter]();
+    }
   }
 
   return potentialPassword;
