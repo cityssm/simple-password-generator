@@ -1,6 +1,7 @@
 # simple-password-generator
 
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/af55a93d353f4881ad2fdee1c582e495)](https://app.codacy.com/gh/cityssm/simple-password-generator?utm_source=github.com&utm_medium=referral&utm_content=cityssm/simple-password-generator&utm_campaign=Badge_Grade_Dashboard)
+[![Maintainability](https://api.codeclimate.com/v1/badges/f274b62fe5e1f778ddd9/maintainability)](https://codeclimate.com/github/cityssm/simple-password-generator/maintainability)
 
 Makes generating simple or complex, _appropriate_ passwords a breeze.
 

@@ -1,0 +1,23 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.shuffleString = exports.randomItem = exports.randomInt = void 0;
+exports.randomInt = (minimum, maximum) => {
+    if (maximum === undefined) {
+        maximum = minimum;
+        minimum = 0;
+    }
+    return Math.floor((Math.random() * (maximum - minimum + 1)) + minimum);
+};
+exports.randomItem = (array) => {
+    return array[exports.randomInt(array.length - 1)];
+};
+exports.shuffleString = (sourceString) => {
+    const stringArray = sourceString.split("");
+    for (let indexA = stringArray.length - 1; indexA > 0; indexA--) {
+        const indexB = Math.floor(Math.random() * (indexA + 1));
+        const stringCharacter = stringArray[indexA];
+        stringArray[indexA] = stringArray[indexB];
+        stringArray[indexB] = stringCharacter;
+    }
+    return stringArray.join("");
+};
