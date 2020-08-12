@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.shuffleString = exports.randomItem = exports.randomInt = void 0;
+exports.toProperCase = exports.shuffleString = exports.randomItem = exports.randomInt = void 0;
 exports.randomInt = (minimum, maximum) => {
     if (maximum === undefined) {
         maximum = minimum;
@@ -20,4 +20,8 @@ exports.shuffleString = (sourceString) => {
         stringArray[indexB] = stringCharacter;
     }
     return stringArray.join("");
+};
+exports.toProperCase = (lowercaseString) => {
+    return lowercaseString.charAt(0).toUpperCase() +
+        (lowercaseString.length > 1 ? lowercaseString.substring(1) : "");
 };

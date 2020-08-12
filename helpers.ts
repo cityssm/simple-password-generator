@@ -35,3 +35,10 @@ export const shuffleString = (sourceString: string) => {
 
   return stringArray.join("");
 };
+
+
+export const toProperCase = (lowercaseString: string) => {
+
+  return lowercaseString.charAt(0).toUpperCase() +
+    (lowercaseString.length > 1 ? lowercaseString.substring(1) : "");
+};

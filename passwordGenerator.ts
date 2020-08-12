@@ -1,5 +1,5 @@
 import * as randomWords from "random-words";
-import { randomInt, randomItem } from "./helpers";
+import { randomInt, randomItem, toProperCase } from "./helpers";
 
 
 /*
@@ -19,71 +19,71 @@ const symbols = ["!", "@", "$", "%", "*", "-", "_", "+", "=", "?"];
  */
 
 
+const getPasswordPiece = (patternCharacter: string) => {
+
+  let passwordPiece = "";
+
+  switch (patternCharacter) {
+
+    // Words
+
+    case "w":
+
+      passwordPiece = randomWords();
+      break;
+
+    case "W":
+
+      passwordPiece = randomWords().toUpperCase();
+      break;
+
+    case "C":
+
+      passwordPiece = toProperCase(randomWords());
+      break;
+
+    // Letters
+
+    case "x":
+
+      passwordPiece = randomItem(letters);
+      break;
+
+    case "X":
+
+      passwordPiece = randomItem(letters).toUpperCase();
+      break;
+
+    // Numbers
+
+    case "n":
+
+      passwordPiece = randomInt(9).toString();
+      break;
+
+    // Symbols
+
+    case "s":
+
+      passwordPiece = randomItem(symbols);
+      break;
+
+    default:
+
+      console.warn("Unrecognized pattern character: " + patternCharacter);
+      break;
+  }
+
+  return passwordPiece;
+};
+
+
 export const generatePasswordFromPattern = (passwordPattern: string) => {
 
   let potentialPassword = "";
 
   for (const patternCharacter of passwordPattern) {
-
-    let passwordPiece = "";
-
-    switch (patternCharacter) {
-
-      // Words
-
-      case "w":
-
-        passwordPiece = randomWords();
-        break;
-
-      case "W":
-
-        passwordPiece = randomWords().toUpperCase();
-        break;
-
-      case "C":
-
-        passwordPiece = randomWords();
-
-        passwordPiece = passwordPiece.charAt(0).toUpperCase() +
-          (passwordPiece.length > 1 ? passwordPiece.substring(1) : "");
-
-        break;
-
-      // Letters
-
-      case "x":
-
-        passwordPiece = randomItem(letters);
-        break;
-
-      case "X":
-
-        passwordPiece = randomItem(letters).toUpperCase();
-        break;
-
-      // Numbers
-
-      case "n":
-
-        passwordPiece = randomInt(9).toString();
-        break;
-
-      // Symbols
-
-      case "s":
-
-        passwordPiece = randomItem(symbols);
-        break;
-
-      default:
-
-        console.warn("Unrecognized pattern character: " + patternCharacter);
-        break;
-
-    }
-
-    potentialPassword += passwordPiece;
+    potentialPassword += getPasswordPiece(patternCharacter);
   }
 
   return potentialPassword;
