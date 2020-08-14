@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.generatePassword = exports.defaultGenerateOptions = void 0;
+exports.generatePassword = exports.hasCussWord = exports.defaultGenerateOptions = void 0;
 const helpers_1 = require("./helpers");
 const passwordGenerator_1 = require("./passwordGenerator");
 const unleet_1 = require("@cityssm/unleet");
@@ -16,7 +16,7 @@ exports.defaultGenerateOptions = {
 const cussWords = Object.keys(cussWordsObject).filter((cussword) => {
     return cussWordsObject[cussword] > 0;
 });
-const hasCussWord = (potentialPassword) => {
+exports.hasCussWord = (potentialPassword) => {
     const potentialPasswordLowerCase = potentialPassword.toLowerCase();
     const potentialPasswordLowerCaseList = unleet_1.unleet(potentialPassword);
     if (!potentialPasswordLowerCaseList.includes(potentialPasswordLowerCase)) {
@@ -42,7 +42,7 @@ exports.generatePassword = (userGenerateOptions) => {
         const potentialPassword = passwordGenerator_1.generatePasswordFromPattern(passwordPattern);
         if (potentialPassword.length >= generateOptions.minLength &&
             potentialPassword.length <= generateOptions.maxLength &&
-            !hasCussWord(potentialPassword)) {
+            !exports.hasCussWord(potentialPassword)) {
             return potentialPassword;
         }
         retries -= 1;

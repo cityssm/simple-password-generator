@@ -37,7 +37,7 @@ const cussWords = Object.keys(cussWordsObject).filter((cussword) => {
 });
 
 
-const hasCussWord = (potentialPassword: string) => {
+export const hasCussWord = (potentialPassword: string) => {
 
   const potentialPasswordLowerCase = potentialPassword.toLowerCase();
 
