@@ -29,5 +29,8 @@ describe("simplePasswordGenerator", function () {
         it("Should return a password with three lowercase letters", () => {
             assert.match(testPassword, /.*[a-z].*[a-z].*[a-z].*/);
         });
+        it("Should return a password with three numbers", () => {
+            assert.match(testPassword, /.*[0-9].*[0-9].*[0-9].*/);
+        });
     });
 });
