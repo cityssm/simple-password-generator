@@ -64,34 +64,34 @@ const hasCussWord = (potentialPassword: string) => {
  */
 
 
-const generatePasswordRecurse = (generateOptions: GenerateOptions, retries: number): string | null => {
-
-  if (retries < 0) {
-    return null;
-  }
-
-  const potentialPassword = generatePasswordFromPattern(generateOptions.pattern);
-
-  if (potentialPassword.length < generateOptions.minLength || potentialPassword.length > generateOptions.maxLength) {
-    return generatePasswordRecurse(generateOptions, retries - 1);
-  }
-
-  if (hasCussWord(potentialPassword)) {
-    return generatePasswordRecurse(generateOptions, retries - 1);
-  }
-
-  return potentialPassword;
-};
-
-
 export const generatePassword = (userGenerateOptions?: GenerateOptions): string | null => {
 
   const generateOptions = Object.assign({}, defaultGenerateOptions, userGenerateOptions);
 
+  let passwordPattern = generateOptions.pattern;
+
+  // Shuffle the pattern if necessary
   if (generateOptions.doShufflePattern) {
-    generateOptions.pattern = shuffleString(generateOptions.pattern);
+    passwordPattern = shuffleString(passwordPattern);
   }
 
-  return generatePasswordRecurse(generateOptions, generateOptions.retries);
+  let retries = generateOptions.retries;
 
+  // Loop through retries
+  while (retries > 0) {
+
+    const potentialPassword = generatePasswordFromPattern(passwordPattern);
+
+    // Check length, check for potential cuss words
+    if (potentialPassword.length >= generateOptions.minLength &&
+      potentialPassword.length <= generateOptions.maxLength &&
+      !hasCussWord(potentialPassword)) {
+
+      return potentialPassword;
+    }
+
+    retries -= 1;
+  }
+
+  return null;
 };

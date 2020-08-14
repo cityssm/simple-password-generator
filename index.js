@@ -31,23 +31,21 @@ const hasCussWord = (potentialPassword) => {
     }
     return false;
 };
-const generatePasswordRecurse = (generateOptions, retries) => {
-    if (retries < 0) {
-        return null;
-    }
-    const potentialPassword = passwordGenerator_1.generatePasswordFromPattern(generateOptions.pattern);
-    if (potentialPassword.length < generateOptions.minLength || potentialPassword.length > generateOptions.maxLength) {
-        return generatePasswordRecurse(generateOptions, retries - 1);
-    }
-    if (hasCussWord(potentialPassword)) {
-        return generatePasswordRecurse(generateOptions, retries - 1);
-    }
-    return potentialPassword;
-};
 exports.generatePassword = (userGenerateOptions) => {
     const generateOptions = Object.assign({}, exports.defaultGenerateOptions, userGenerateOptions);
+    let passwordPattern = generateOptions.pattern;
     if (generateOptions.doShufflePattern) {
-        generateOptions.pattern = helpers_1.shuffleString(generateOptions.pattern);
+        passwordPattern = helpers_1.shuffleString(passwordPattern);
     }
-    return generatePasswordRecurse(generateOptions, generateOptions.retries);
+    let retries = generateOptions.retries;
+    while (retries > 0) {
+        const potentialPassword = passwordGenerator_1.generatePasswordFromPattern(passwordPattern);
+        if (potentialPassword.length >= generateOptions.minLength &&
+            potentialPassword.length <= generateOptions.maxLength &&
+            !hasCussWord(potentialPassword)) {
+            return potentialPassword;
+        }
+        retries -= 1;
+    }
+    return null;
 };
