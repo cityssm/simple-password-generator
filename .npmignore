@@ -1,5 +1,9 @@
+.github
+.nyc-output
+coverage
 node_modules
 test
+
 .atomignore
 .eslintrc.js
 .git

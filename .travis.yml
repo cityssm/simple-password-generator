@@ -2,8 +2,6 @@ language: node_js
 node_js:
   - lts/*
 
-install:
-  - npm install nyc mocha -g
 before_script:
   - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
   - chmod +x ./cc-test-reporter
@@ -11,4 +9,4 @@ before_script:
 script:
   - nyc --reporter=lcov npm run test
 after_script:
-  - ./cc-test-reporter after-build
+  - ./cc-test-reporter after-build -t lcov --exit-code $TRAVIS_TEST_RESULT

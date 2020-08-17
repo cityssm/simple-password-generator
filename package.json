@@ -4,7 +4,8 @@
   "description": "Makes generating simple or complex, appropriate passwords a breeze.",
   "main": "index.js",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "coverage": "nyc --reporter=lcov npm run test"
   },
   "repository": {
     "type": "git",
@@ -39,6 +40,7 @@
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-standard": "^4.0.1",
     "mocha": "^8.1.1",
+    "nyc": "^15.1.0",
     "typescript": "^3.9.7"
   }
 }
