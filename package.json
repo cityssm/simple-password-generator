@@ -1,11 +1,11 @@
 {
   "name": "@cityssm/simple-password-generator",
-  "version": "0.8.3",
+  "version": "0.8.4",
   "description": "Makes generating simple or complex, appropriate passwords a breeze.",
   "main": "index.js",
   "scripts": {
     "test": "mocha",
-    "coverage": "nyc --reporter=lcov npm run test"
+    "coverage": "nyc npm run test"
   },
   "repository": {
     "type": "git",

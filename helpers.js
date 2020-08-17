@@ -1,11 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.toProperCase = exports.shuffleString = exports.randomItem = exports.randomInt = void 0;
-exports.randomInt = (minimum, maximum) => {
-    if (maximum === undefined) {
-        maximum = minimum;
-        minimum = 0;
-    }
+exports.randomInt = (maximum) => {
+    const minimum = 0;
     return Math.floor((Math.random() * (maximum - minimum + 1)) + minimum);
 };
 exports.randomItem = (array) => {
