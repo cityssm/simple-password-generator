@@ -1,8 +1,10 @@
 node_modules
+test
 .atomignore
 .eslintrc.js
 .git
 .github
 .gitignore
 .npmignore
+.travis.yml
 tsconfig.json

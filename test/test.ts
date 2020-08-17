@@ -9,17 +9,17 @@ describe("simplePasswordGenerator", function() {
 
   describe("#generatePassword() = \"" + testPassword + "\"", () => {
 
-    it("Should return a new password greater than or equal to the minLength = " +
+    it("Length greater than or equal to the minLength = " +
       simplePasswordGenerator.defaultGenerateOptions.minLength.toString(), () => {
         assert.ok(testPassword.length >= simplePasswordGenerator.defaultGenerateOptions.minLength);
       });
 
-    it("Should return a new password less than or equal to the maxLength = " +
+    it("Length less than or equal to the maxLength = " +
       simplePasswordGenerator.defaultGenerateOptions.maxLength.toString(), () => {
         assert.ok(testPassword.length <= simplePasswordGenerator.defaultGenerateOptions.maxLength);
       });
 
-    it("Should return a new password with no cuss words", () => {
+    it("Contains zero cuss words", () => {
       assert.ok(!simplePasswordGenerator.hasCussWord(testPassword));
     });
   });
@@ -35,15 +35,19 @@ describe("simplePasswordGenerator", function() {
 
   describe("#generatePassword({ pattern: \"xxxXXXnnns\", doShufflePattern: true }) = \"" + testPassword + "\"", () => {
 
-    it("Should return a password with three capital letters", () => {
+    it("Length should equal 10", () => {
+      assert.ok(testPassword.length === 10);
+    });
+
+    it("Contains three capital letters", () => {
       assert.match(testPassword, /.*[A-Z].*[A-Z].*[A-Z].*/);
     });
 
-    it("Should return a password with three lowercase letters", () => {
+    it("Contains three lowercase letters", () => {
       assert.match(testPassword, /.*[a-z].*[a-z].*[a-z].*/);
     });
 
-    it("Should return a password with three numbers", () => {
+    it("New password contains with three numbers", () => {
       assert.match(testPassword, /.*[0-9].*[0-9].*[0-9].*/);
     });
   });
