@@ -13,9 +13,21 @@ exports.defaultGenerateOptions = {
     doShufflePattern: false,
     retries: 20
 };
-const cussWords = Object.keys(cussWordsObject).filter((cussword) => {
-    return cussWordsObject[cussword] > 0;
+let cussWordsUnfiltered = Object.keys(cussWordsObject);
+const cussWords = cussWordsUnfiltered.filter((cussword, cusswordIndex) => {
+    return cussword.length > 2 &&
+        cussWordsObject[cussword] > 0 &&
+        (cusswordIndex === 0 || !cussword.includes(cussWordsUnfiltered[cusswordIndex - 1]));
 });
+cussWordsUnfiltered = null;
+const _hasCussWord = (unleetedString) => {
+    for (const cussWord of cussWords) {
+        if (unleetedString.includes(cussWord)) {
+            return true;
+        }
+    }
+    return false;
+};
 exports.hasCussWord = (potentialPassword) => {
     const potentialPasswordLowerCase = potentialPassword.toLowerCase();
     const potentialPasswordLowerCaseList = unleet_1.unleet(potentialPassword);
@@ -23,10 +35,8 @@ exports.hasCussWord = (potentialPassword) => {
         potentialPasswordLowerCaseList.push(potentialPasswordLowerCase);
     }
     for (const potentialPasswordToCheck of potentialPasswordLowerCaseList) {
-        for (const cussWord of cussWords) {
-            if (potentialPasswordToCheck.includes(cussWord)) {
-                return true;
-            }
+        if (_hasCussWord(potentialPasswordToCheck)) {
+            return true;
         }
     }
     return false;

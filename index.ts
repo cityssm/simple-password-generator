@@ -32,9 +32,27 @@ export const defaultGenerateOptions: GenerateOptions = {
  */
 
 
-const cussWords = Object.keys(cussWordsObject).filter((cussword) => {
-  return cussWordsObject[cussword] > 0;
+let cussWordsUnfiltered = Object.keys(cussWordsObject);
+
+const cussWords = cussWordsUnfiltered.filter((cussword, cusswordIndex) => {
+  return cussword.length > 2 &&
+    cussWordsObject[cussword] > 0 &&
+    (cusswordIndex === 0 || !cussword.includes(cussWordsUnfiltered[cusswordIndex - 1]));
 });
+
+cussWordsUnfiltered = null;
+
+
+const _hasCussWord = (unleetedString: string) => {
+
+  for (const cussWord of cussWords) {
+    if (unleetedString.includes(cussWord)) {
+      return true;
+    }
+  }
+
+  return false;
+};
 
 
 export const hasCussWord = (potentialPassword: string) => {
@@ -48,10 +66,8 @@ export const hasCussWord = (potentialPassword: string) => {
   }
 
   for (const potentialPasswordToCheck of potentialPasswordLowerCaseList) {
-    for (const cussWord of cussWords) {
-      if (potentialPasswordToCheck.includes(cussWord)) {
-        return true;
-      }
+    if (_hasCussWord(potentialPasswordToCheck)) {
+      return true;
     }
   }
 
