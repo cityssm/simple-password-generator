@@ -6,7 +6,7 @@ import * as simplePasswordGenerator from "../index";
 // Run 20 times to ensure some passwords not meeting default criteria are discarded
 
 
-describe("simplePasswordGenerator", function() {
+describe("simplePasswordGenerator", () => {
 
   for (let testCount = 0; testCount < 20; testCount += 1) {
 

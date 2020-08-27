@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const assert = require("assert");
 const simplePasswordGenerator = require("../index");
-describe("simplePasswordGenerator", function () {
+describe("simplePasswordGenerator", () => {
     for (let testCount = 0; testCount < 20; testCount += 1) {
         const testPassword = simplePasswordGenerator.generatePassword();
         describe("#generatePassword() = \"" + testPassword + "\"", () => {
