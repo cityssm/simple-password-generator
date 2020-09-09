@@ -18,7 +18,7 @@ describe("simplePasswordGenerator", function() {
   describe("#generatePassword(" + JSON.stringify(optionsImpossible) + ") = \"" + testPasswordImpossible + "\"", () => {
 
     it("New password should be null", () => {
-      assert.equal(testPasswordImpossible, null);
+      assert.strictEqual(testPasswordImpossible, null);
     });
   });
 });
