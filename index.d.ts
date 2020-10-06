@@ -3,6 +3,7 @@ export interface GenerateOptions {
     maxLength?: number;
     pattern?: string;
     doShufflePattern?: boolean;
+    minScore?: number;
     retries?: number;
 }
 export declare const defaultGenerateOptions: GenerateOptions;

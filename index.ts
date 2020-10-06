@@ -1,3 +1,4 @@
+import * as zxcvbn from "zxcvbn";
 import { shuffleString } from "./helpers";
 import { generatePasswordFromPattern } from "./passwordGenerator";
 import { unleet } from "@cityssm/unleet";
@@ -14,6 +15,7 @@ export interface GenerateOptions {
   maxLength?: number;
   pattern?: string;
   doShufflePattern?: boolean;
+  minScore?: number;
   retries?: number;
 };
 
@@ -21,8 +23,9 @@ export interface GenerateOptions {
 export const defaultGenerateOptions: GenerateOptions = {
   minLength: 8,
   maxLength: 50,
-  pattern: "wCnn",
+  pattern: "wCWsnn",
   doShufflePattern: false,
+  minScore: 2,
   retries: 20
 };
 
@@ -84,6 +87,8 @@ export const generatePassword = (userGenerateOptions?: GenerateOptions): string 
 
   const generateOptions = Object.assign({}, defaultGenerateOptions, userGenerateOptions);
 
+  generateOptions.minScore = Math.min(generateOptions.minScore, 4);
+
   let passwordPattern = generateOptions.pattern;
 
   // Shuffle the pattern if necessary
@@ -101,6 +106,7 @@ export const generatePassword = (userGenerateOptions?: GenerateOptions): string 
     // Check length, check for potential cuss words
     if (potentialPassword.length >= generateOptions.minLength &&
       potentialPassword.length <= generateOptions.maxLength &&
+      zxcvbn(potentialPassword).score >= generateOptions.minScore &&
       !hasCussWord(potentialPassword)) {
 
       return potentialPassword;

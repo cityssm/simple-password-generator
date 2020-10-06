@@ -1,6 +1,6 @@
 {
   "name": "@cityssm/simple-password-generator",
-  "version": "0.8.8",
+  "version": "1.0.0",
   "description": "Makes generating simple or complex, appropriate passwords a breeze.",
   "main": "index.js",
   "scripts": {
@@ -12,9 +12,13 @@
     "url": "git+https://github.com/cityssm/simple-password-generator.git"
   },
   "keywords": [
+    "generator",
     "password",
+    "password-generator",
     "safe",
-    "unleet"
+    "security",
+    "unleet",
+    "zxcvbn"
   ],
   "author": "The Corporation of the City of Sault Ste. Marie",
   "license": "MIT",
@@ -26,13 +30,15 @@
     "@cityssm/unleet": "^0.11.3",
     "cuss": "^1.21.0",
     "random-item": "^3.0.0",
-    "random-words": "^1.1.1"
+    "random-words": "^1.1.1",
+    "zxcvbn": "^4.4.2"
   },
   "devDependencies": {
     "@types/mocha": "^8.0.3",
-    "@types/node": "^14.11.2",
-    "@typescript-eslint/eslint-plugin": "^4.3.0",
-    "@typescript-eslint/parser": "^4.3.0",
+    "@types/node": "^14.11.5",
+    "@types/zxcvbn": "^4.4.0",
+    "@typescript-eslint/eslint-plugin": "^4.4.0",
+    "@typescript-eslint/parser": "^4.4.0",
     "eslint": "^7.10.0",
     "eslint-config-standard-with-typescript": "^19.0.1",
     "eslint-plugin-import": "^2.22.1",

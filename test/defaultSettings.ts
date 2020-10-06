@@ -1,4 +1,5 @@
 import * as assert from "assert";
+import * as zxcvbn from "zxcvbn";
 import * as simplePasswordGenerator from "../index";
 
 
@@ -26,6 +27,10 @@ describe("simplePasswordGenerator", () => {
 
       it("Contains zero cuss words", () => {
         assert.ok(!simplePasswordGenerator.hasCussWord(testPassword));
+      });
+
+      it("Generates a password with a zxcvbn rating of " + simplePasswordGenerator.defaultGenerateOptions.minScore.toString() + " or better", () => {
+        assert.ok(zxcvbn(testPassword).score >= simplePasswordGenerator.defaultGenerateOptions.minScore);
       });
     });
   }
