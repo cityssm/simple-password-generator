@@ -1,4 +1,4 @@
-import * as randomWords from "random-words";
+import { getRandomWord } from "@cityssm/random-words";
 import { randomInt, randomItem, toProperCase } from "./helpers";
 
 
@@ -22,9 +22,9 @@ const symbols = ["!", "@", "$", "%", "*", "-", "_", "+", "=", "?"];
 const passwordPatternPieces: { [patternCharacter: string]: () => string } = {
 
   // Words
-  w: () => { return randomWords(); },
-  W: () => { return randomWords().toUpperCase(); },
-  C: () => { return toProperCase(randomWords()); },
+  w: () => { return getRandomWord(); },
+  W: () => { return getRandomWord().toUpperCase(); },
+  C: () => { return toProperCase(getRandomWord()); },
 
   // Letters
   x: () => { return randomItem(letters); },
