@@ -1,10 +1,6 @@
 # simple-password-generator
 
-[![npm](https://badgen.net/npm/v/@cityssm/simple-password-generator)](https://www.npmjs.com/package/@cityssm/simple-password-generator)
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/af55a93d353f4881ad2fdee1c582e495)](https://app.codacy.com/gh/cityssm/simple-password-generator?utm_source=github.com&utm_medium=referral&utm_content=cityssm/simple-password-generator&utm_campaign=Badge_Grade_Dashboard)
-[![Maintainability](https://api.codeclimate.com/v1/badges/f274b62fe5e1f778ddd9/maintainability)](https://codeclimate.com/github/cityssm/simple-password-generator/maintainability)
-[![Test Coverage](https://api.codeclimate.com/v1/badges/f274b62fe5e1f778ddd9/test_coverage)](https://codeclimate.com/github/cityssm/simple-password-generator/test_coverage)
-[![Build Status](https://travis-ci.com/cityssm/simple-password-generator.svg?branch=master)](https://travis-ci.com/cityssm/simple-password-generator)
+[![npm](https://img.shields.io/npm/v/@cityssm/simple-password-generator)](https://www.npmjs.com/package/@cityssm/simple-password-generator) [![Codacy Badge](https://img.shields.io/codacy/grade/af55a93d353f4881ad2fdee1c582e495)](https://app.codacy.com/gh/cityssm/simple-password-generator) [![Maintainability](https://img.shields.io/codeclimate/maintainability/cityssm/simple-password-generator)](https://codeclimate.com/github/cityssm/simple-password-generator/maintainability) [![Test Coverage](https://img.shields.io/codeclimate/coverage/cityssm/simple-password-generator)](https://codeclimate.com/github/cityssm/simple-password-generator/test_coverage) [![Build Status](https://img.shields.io/travis/cityssm/simple-password-generator)](https://travis-ci.com/cityssm/simple-password-generator) ![Snyk Vulnerabilities for GitHub Repo](https://img.shields.io/snyk/vulnerabilities/github/cityssm/simple-password-generator)
 
 Makes generating simple or complex, _appropriate_ passwords a breeze.
 
