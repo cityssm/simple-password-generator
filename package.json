@@ -34,8 +34,8 @@
     "zxcvbn": "^4.4.2"
   },
   "devDependencies": {
-    "@types/mocha": "^8.0.4",
-    "@types/node": "^14.14.10",
+    "@types/mocha": "^8.2.0",
+    "@types/node": "^14.14.12",
     "@types/zxcvbn": "^4.4.0",
     "@typescript-eslint/eslint-plugin": "^4.9.0",
     "@typescript-eslint/parser": "^4.9.0",
