@@ -1,11 +1,4 @@
-export interface GenerateOptions {
-    minLength?: number;
-    maxLength?: number;
-    pattern?: string;
-    doShufflePattern?: boolean;
-    minScore?: number;
-    retries?: number;
-}
-export declare const defaultGenerateOptions: GenerateOptions;
+import type * as types from "./types";
+export declare const defaultGenerateOptions: types.GenerateOptions;
 export declare const hasCussWord: (potentialPassword: string) => boolean;
-export declare const generatePassword: (userGenerateOptions?: GenerateOptions) => string | null;
+export declare const generatePassword: (userGenerateOptions?: types.OptionalGenerateOptions) => string | null;

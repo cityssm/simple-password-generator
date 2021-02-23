@@ -4,23 +4,15 @@ import { generatePasswordFromPattern } from "./passwordGenerator";
 import { unleet } from "@cityssm/unleet";
 import * as cussWordsObject from "cuss/index.json";
 
+import type * as types from "./types";
+
 
 /*
  * Generator Options
  */
 
 
-export interface GenerateOptions {
-  minLength?: number;
-  maxLength?: number;
-  pattern?: string;
-  doShufflePattern?: boolean;
-  minScore?: number;
-  retries?: number;
-};
-
-
-export const defaultGenerateOptions: GenerateOptions = {
+export const defaultGenerateOptions: types.GenerateOptions = {
   minLength: 8,
   maxLength: 50,
   pattern: "wCWsnn",
@@ -35,15 +27,18 @@ export const defaultGenerateOptions: GenerateOptions = {
  */
 
 
-let cussWordsUnfiltered = Object.keys(cussWordsObject);
+const cussWords: string[] = (() => {
 
-const cussWords = cussWordsUnfiltered.filter((cussword, cusswordIndex) => {
-  return cussword.length > 2 &&
-    cussWordsObject[cussword] > 0 &&
-    (cusswordIndex === 0 || !cussword.includes(cussWordsUnfiltered[cusswordIndex - 1]));
-});
+  const cussWordsUnfiltered: string[] = Object.keys(cussWordsObject);
 
-cussWordsUnfiltered = null;
+  const cussWords = cussWordsUnfiltered.filter((cussword, cusswordIndex) => {
+    return cussword.length > 2 &&
+      cussWordsObject[cussword] > 0 &&
+      (cusswordIndex === 0 || !cussword.includes(cussWordsUnfiltered[cusswordIndex - 1]));
+  });
+
+  return cussWords;
+})();
 
 
 const _hasCussWord = (unleetedString: string) => {
@@ -83,9 +78,10 @@ export const hasCussWord = (potentialPassword: string) => {
  */
 
 
-export const generatePassword = (userGenerateOptions?: GenerateOptions): string | null => {
+export const generatePassword = (userGenerateOptions?: types.OptionalGenerateOptions): string | null => {
 
-  const generateOptions = Object.assign({}, defaultGenerateOptions, userGenerateOptions);
+  const generateOptions: types.GenerateOptions =
+    Object.assign({}, defaultGenerateOptions, userGenerateOptions);
 
   generateOptions.minScore = Math.min(generateOptions.minScore, 4);
 
