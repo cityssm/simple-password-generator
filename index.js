@@ -1,11 +1,11 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.generatePassword = exports.hasCussWord = exports.defaultGenerateOptions = void 0;
+const zxcvbn = require("zxcvbn");
 const helpers_1 = require("./helpers");
 const passwordGenerator_1 = require("./passwordGenerator");
 const unleet_1 = require("@cityssm/unleet");
 const cussWordsObject = require("cuss/index.json");
-const zxcvbn = require("zxcvbn");
 exports.defaultGenerateOptions = {
     minLength: 8,
     maxLength: 50,
