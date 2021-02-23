@@ -16,7 +16,7 @@ const passwordPatternPieces = {
     n: () => { return helpers_1.randomInt(9).toString(); },
     s: () => { return helpers_1.randomItem(symbols); }
 };
-exports.generatePasswordFromPattern = (passwordPattern) => {
+const generatePasswordFromPattern = (passwordPattern) => {
     let potentialPassword = "";
     for (const patternCharacter of passwordPattern) {
         if (passwordPatternPieces[patternCharacter]) {
@@ -25,3 +25,4 @@ exports.generatePasswordFromPattern = (passwordPattern) => {
     }
     return potentialPassword;
 };
+exports.generatePasswordFromPattern = generatePasswordFromPattern;

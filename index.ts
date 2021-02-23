@@ -1,10 +1,11 @@
-import * as zxcvbn from "zxcvbn";
 import { shuffleString } from "./helpers";
 import { generatePasswordFromPattern } from "./passwordGenerator";
 import { unleet } from "@cityssm/unleet";
 import * as cussWordsObject from "cuss/index.json";
 
 import type * as types from "./types";
+
+import zxcvbn = require("zxcvbn");
 
 
 /*

@@ -38,7 +38,7 @@ const passwordPatternPieces: { [patternCharacter: string]: () => string } = {
 };
 
 
-export const generatePasswordFromPattern = (passwordPattern: string) => {
+export const generatePasswordFromPattern = (passwordPattern: string): string => {
 
   let potentialPassword = "";
 
