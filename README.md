@@ -8,11 +8,11 @@ Makes generating simple or complex, _appropriate_ passwords a breeze.
 
 -   Passwords can include words, letters, numbers, and symbols.
 
--   Passwords are scanned with [zxcvbn](https://github.com/dropbox/zxcvbn)
+-   Passwords are scanned with [zxcvbn-typescript](https://github.com/trichards57/zxcvbn)
     to reduce their guessability.
 
 -   Passwords are translated with [unleet](https://github.com/cityssm/unleet),
-    and scanned using [cuss](https://github.com/words/cuss) to
+    and scanned using [badwords](https://github.com/MauriceButler/badwords) to
     make sure they are appropriate.
 
 ## Installation
