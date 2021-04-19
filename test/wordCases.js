@@ -1,7 +1,5 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-const assert = require("assert");
-const simplePasswordGenerator = require("../index");
+import * as assert from "assert";
+import * as simplePasswordGenerator from "../index.js";
 describe("simplePasswordGenerator", function () {
     const optionsWords = {
         pattern: "wCW"

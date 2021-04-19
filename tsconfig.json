@@ -1,14 +1,13 @@
 {
   "compilerOptions": {
     "target": "ES6",
-    "module": "CommonJS",
+    "module": "ES2020",
     "moduleResolution": "Node",
     "isolatedModules": false,
     "declaration": true,
     "noImplicitAny": false,
     "removeComments": true,
-    "allowUnreachableCode": false,
-    "resolveJsonModule": true
+    "allowUnreachableCode": false
   },
   "compileOnSave": true,
   "buildOnSave": true,

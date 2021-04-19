@@ -1,5 +1,7 @@
 import * as assert from "assert";
-import * as simplePasswordGenerator from "../index";
+import * as simplePasswordGenerator from "../index.js";
+
+import type * as types from "../types";
 
 
 // Word cases test
@@ -7,7 +9,7 @@ import * as simplePasswordGenerator from "../index";
 
 describe("simplePasswordGenerator", function() {
 
-  const optionsWords: simplePasswordGenerator.GenerateOptions = {
+  const optionsWords: types.OptionalGenerateOptions = {
     pattern: "wCW"
   };
 

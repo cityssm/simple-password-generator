@@ -1,6 +1,6 @@
 import * as assert from "assert";
-import * as zxcvbn from "zxcvbn";
-import * as simplePasswordGenerator from "../index";
+import { zxcvbn } from "zxcvbn-typescript";
+import * as simplePasswordGenerator from "../index.js";
 
 
 // Default test

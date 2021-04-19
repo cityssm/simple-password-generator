@@ -1,8 +1,9 @@
-import * as zxcvbn from "zxcvbn";
-import { shuffleString } from "./helpers";
-import { generatePasswordFromPattern } from "./passwordGenerator";
+import { zxcvbn } from "zxcvbn-typescript";
+import { shuffleString } from "./helpers.js";
+import { generatePasswordFromPattern } from "./passwordGenerator.js";
 import { unleet } from "@cityssm/unleet";
-import * as cussWordsObject from "cuss/index.json";
+
+import * as cussWords from "badwords/array.js";
 
 import type * as types from "./types";
 
@@ -27,23 +28,9 @@ export const defaultGenerateOptions: types.GenerateOptions = {
  */
 
 
-const cussWords: string[] = (() => {
-
-  const cussWordsUnfiltered: string[] = Object.keys(cussWordsObject);
-
-  const cussWords = cussWordsUnfiltered.filter((cussword, cusswordIndex) => {
-    return cussword.length > 2 &&
-      cussWordsObject[cussword] > 0 &&
-      (cusswordIndex === 0 || !cussword.includes(cussWordsUnfiltered[cusswordIndex - 1]));
-  });
-
-  return cussWords;
-})();
-
-
 const _hasCussWord = (unleetedString: string) => {
 
-  for (const cussWord of cussWords) {
+  for (const cussWord of cussWords.default) {
     if (unleetedString.includes(cussWord)) {
       return true;
     }

@@ -1,5 +1,5 @@
 import { getRandomWord } from "@cityssm/random-words";
-import { randomInt, randomItem, toProperCase } from "./helpers";
+import { randomInt, randomItem, toProperCase } from "./helpers.js";
 
 
 /*

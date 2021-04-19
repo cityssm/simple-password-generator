@@ -1,5 +1,5 @@
 import * as assert from "assert";
-import * as simplePasswordGenerator from "../index";
+import * as simplePasswordGenerator from "../index.js";
 
 
 // Impossible test

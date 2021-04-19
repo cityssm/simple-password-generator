@@ -1,8 +1,6 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-const assert = require("assert");
-const zxcvbn = require("zxcvbn");
-const simplePasswordGenerator = require("../index");
+import * as assert from "assert";
+import { zxcvbn } from "zxcvbn-typescript";
+import * as simplePasswordGenerator from "../index.js";
 describe("simplePasswordGenerator", () => {
     for (let testCount = 0; testCount < 20; testCount += 1) {
         const testPassword = simplePasswordGenerator.generatePassword();

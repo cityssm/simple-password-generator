@@ -1,5 +1,7 @@
 import * as assert from "assert";
-import * as simplePasswordGenerator from "../index";
+import * as simplePasswordGenerator from "../index.js";
+
+import type * as types from "../types";
 
 
 // Shuffle test
@@ -7,7 +9,7 @@ import * as simplePasswordGenerator from "../index";
 
 describe("simplePasswordGenerator", function() {
 
-  const optionsShuffle: simplePasswordGenerator.GenerateOptions = {
+  const optionsShuffle: types.OptionalGenerateOptions = {
     pattern: "xxxXXXnnns",
     doShufflePattern: true
   };
