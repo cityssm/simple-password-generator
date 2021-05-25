@@ -1,11 +1,12 @@
 {
   "name": "@cityssm/simple-password-generator",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "Makes generating simple or complex, appropriate passwords a breeze.",
   "type": "module",
   "exports": "./index.js",
+  "types": "./index.d.ts",
   "engines": {
-    "node": ">=12"
+    "node": "^12.20.0 || ^14.13.1 || >=16.0.0"
   },
   "scripts": {
     "test": "mocha",
@@ -32,23 +33,23 @@
   "homepage": "https://github.com/cityssm/simple-password-generator#readme",
   "dependencies": {
     "@cityssm/random-words": "^1.2.1",
-    "@cityssm/unleet": "^2.0.0",
+    "@cityssm/unleet": "^2.1.0",
     "badwords": "^1.0.0",
-    "random-item": "^4.0.0",
+    "random-item": "^4.0.1",
     "zxcvbn-typescript": "^5.0.1"
   },
   "devDependencies": {
     "@types/mocha": "^8.2.2",
-    "@types/node": "^15.0.2",
+    "@types/node": "^15.6.1",
     "@types/zxcvbn": "^4.4.1",
-    "@typescript-eslint/eslint-plugin": "^4.22.1",
-    "@typescript-eslint/parser": "^4.22.1",
+    "@typescript-eslint/eslint-plugin": "^4.25.0",
+    "@typescript-eslint/parser": "^4.25.0",
     "c8": "^7.7.2",
-    "eslint": "^7.26.0",
+    "eslint": "^7.27.0",
     "eslint-config-standard-with-typescript": "^20.0.0",
-    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-import": "^2.23.3",
     "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-promise": "^4.3.1",
+    "eslint-plugin-promise": "^5.1.0",
     "mocha": "^8.4.0",
     "typescript": "^4.2.4"
   }
