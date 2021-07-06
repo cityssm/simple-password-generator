@@ -5,7 +5,7 @@ export interface OptionalGenerateOptions {
   doShufflePattern?: boolean;
   minScore?: number;
   retries?: number;
-};
+}
 
 export interface GenerateOptions {
   minLength: number;
@@ -14,4 +14,4 @@ export interface GenerateOptions {
   doShufflePattern: boolean;
   minScore: number;
   retries: number;
-};
+}
