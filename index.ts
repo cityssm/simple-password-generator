@@ -40,7 +40,7 @@ const _hasCussWord = (unleetedString: string) => {
 };
 
 
-export const hasCussWord = (potentialPassword: string) => {
+export const hasCussWord = (potentialPassword: string): boolean => {
 
   const potentialPasswordLowerCase = potentialPassword.toLowerCase();
 
@@ -65,7 +65,7 @@ export const hasCussWord = (potentialPassword: string) => {
  */
 
 
-export const generatePassword = (userGenerateOptions?: types.OptionalGenerateOptions): string | null => {
+export const generatePassword = (userGenerateOptions?: types.OptionalGenerateOptions): string | undefined => {
 
   const generateOptions: types.GenerateOptions =
     Object.assign({}, defaultGenerateOptions, userGenerateOptions);
@@ -98,5 +98,5 @@ export const generatePassword = (userGenerateOptions?: types.OptionalGenerateOpt
     retries -= 1;
   }
 
-  return null;
+  return undefined;
 };

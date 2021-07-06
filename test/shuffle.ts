@@ -23,15 +23,15 @@ describe("simplePasswordGenerator", function() {
     });
 
     it("Contains three capital letters", () => {
-      assert.match(testPasswordShuffle, /.*[A-Z].*[A-Z].*[A-Z].*/);
+      assert.match(testPasswordShuffle, /(?:.*[A-Z]){3}.*/);
     });
 
     it("Contains three lowercase letters", () => {
-      assert.match(testPasswordShuffle, /.*[a-z].*[a-z].*[a-z].*/);
+      assert.match(testPasswordShuffle, /(?:.*[a-z]){3}.*/);
     });
 
     it("Contains three numbers", () => {
-      assert.match(testPasswordShuffle, /.*[0-9].*[0-9].*[0-9].*/);
+      assert.match(testPasswordShuffle, /(?:.*\d){3}.*/);
     });
   });
 });

@@ -17,5 +17,5 @@ export const shuffleString = (sourceString) => {
 };
 export const toProperCase = (lowercaseString) => {
     return lowercaseString.charAt(0).toUpperCase() +
-        (lowercaseString.length > 1 ? lowercaseString.substring(1) : "");
+        (lowercaseString.length > 1 ? lowercaseString.slice(1) : "");
 };

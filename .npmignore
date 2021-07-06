@@ -5,7 +5,8 @@ node_modules
 test
 
 .atomignore
-.eslintrc.js
+.eslintignore
+.eslintrc.json
 .git
 .github
 .gitignore

@@ -17,8 +17,8 @@ describe("simplePasswordGenerator", function() {
 
   describe("#generatePassword(" + JSON.stringify(optionsImpossible) + ") = \"" + testPasswordImpossible + "\"", () => {
 
-    it("New password should be null", () => {
-      assert.strictEqual(testPasswordImpossible, null);
+    it("New password should be undefined", () => {
+      assert.strictEqual(testPasswordImpossible, undefined);
     });
   });
 });

@@ -1,6 +1,6 @@
 // Inspired by
 // https://github.com/sindresorhus/random-int
-export const randomInt = (maximum: number) => {
+export const randomInt = (maximum: number): number => {
 
   const minimum = 0;
 
@@ -12,14 +12,14 @@ export const randomInt = (maximum: number) => {
 
 // Inspired by
 // https://github.com/sindresorhus/random-item/
-export const randomItem = (array: string[]) => {
+export const randomItem = (array: string[]): string => {
   return array[randomInt(array.length - 1)];
 };
 
 
 // Inspired by
 // https://stackoverflow.com/questions/3943772/how-do-i-shuffle-the-characters-in-a-string-in-javascript
-export const shuffleString = (sourceString: string) => {
+export const shuffleString = (sourceString: string): string => {
 
   const stringArray = sourceString.split("");
 
@@ -35,8 +35,8 @@ export const shuffleString = (sourceString: string) => {
 };
 
 
-export const toProperCase = (lowercaseString: string) => {
+export const toProperCase = (lowercaseString: string): string => {
 
   return lowercaseString.charAt(0).toUpperCase() +
-    (lowercaseString.length > 1 ? lowercaseString.substring(1) : "");
+    (lowercaseString.length > 1 ? lowercaseString.slice(1) : "");
 };

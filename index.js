@@ -50,5 +50,5 @@ export const generatePassword = (userGenerateOptions) => {
         }
         retries -= 1;
     }
-    return null;
+    return undefined;
 };
